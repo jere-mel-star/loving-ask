@@ -24,6 +24,7 @@ const messages = [
 ];
 
 let messageIndex = 0;
+let yesScale = 1;
 
 // Click Envelope
 envelope.addEventListener("click", () => {
@@ -52,6 +53,15 @@ noBtn.addEventListener("mouseover", () => {
     messageIndex = (messageIndex + 1) % messages.length;
 });
 
+// Si logra hacer click en NO, el botón YES crece y el NO se mueve
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    yesScale += 0.5;
+    yesBtn.style.transform = `scale(${yesScale})`;
+    yesBtn.style.transition = "transform 0.3s ease";
+    noBtn.dispatchEvent(new Event('mouseover'));
+});
+
 // YES is clicked
 yesBtn.addEventListener("click", () => {
     // Mensaje final personalizado
@@ -62,6 +72,7 @@ yesBtn.addEventListener("click", () => {
     document.querySelector(".letter-window").classList.add("final");
 
     buttons.style.display = "none";
+    noBtn.style.display = "none";
 
     finalText.style.display = "block";
 });
