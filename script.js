@@ -37,14 +37,14 @@ envelope.addEventListener("click", () => {
 
 // Logic to move the NO btn AND change text
 noBtn.addEventListener("mouseover", () => {
-    const min = 150;
-    const max = 250;
+    const min = 90;
+    const max = 150;
     const distance = Math.random() * (max - min) + min;
     const angle = Math.random() * Math.PI * 2;
     const moveX = Math.cos(angle) * distance;
     const moveY = Math.sin(angle) * distance;
 
-    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transition = "transform 0.2s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     
     // Esto hace que la pregunta cambie por los mensajes de "Are you sure?" etc.
